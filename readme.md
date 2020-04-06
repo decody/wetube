@@ -83,4 +83,19 @@ C: function that looks for the data (데이터를 보여주는 함수)
 video, 비디오를 업로드할 users
 어떤 일이 어떻게 발생하는지에 관한 
 
-### PUG : View를 담당
+### Pug : View를 담당
+- Pug: 템플릿 언어, express의 view engine
+- controller에서 res.send로 Join을 전송을 대신함
+```bash
+npm install pug
+```
+`/views/layouts/main.png`에서 모든 페이지의 베이스 html을 만듬
+`block content` 영역에 모든 컨텐츠들이 배치됨.
+불러오는 페이지에서 `extends layouts/main` 선언
+
+`partials`는 페이지의 일부분
+
+### middlewares.js
+locals 기능을 통해 global 변수로 사용
+
+`res.render()`의 첫번째 인자는 템플릿, 두번째 인자는 템플릿에 추가할 정보 객체
