@@ -1,8 +1,20 @@
 // export const home = (req, res) => res.send("Home");
-export const home = (req, res) => 
-    res.render("home", { pageTitle: "Home" });     // /views/home.png 불러옴
-export const search = (req, res) => 
-    res.render("search", { pageTitle: "Searcj" });
+import { videos } from "../db";
+
+export const home = (req, res) => {
+    res.render("home", { pageTitle: "Home", videos });     // /views/home.pug 불러옴
+}
+    
+export const search = (req, res) => {
+    console.log(req.query.term);
+    // const searchingBy = req.query.term;
+    const {
+        query: { term: searchingBy }
+    } = req;
+    res.render("search", { pageTitle: "Search", searchingBy }); // es6에서 key:value가 같으면 key값만 쓸 수 있음
+    // res.render("search", { pageTitle: "Search", searchingBy: searchingBy });
+}
+    
 export const upload = (req, res) => 
     res.render("upload", { pageTitle: "Upload" });
 export const videoDetail = (req, res) => 

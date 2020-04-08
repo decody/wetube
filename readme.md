@@ -99,3 +99,20 @@ npm install pug
 locals 기능을 통해 global 변수로 사용
 
 `res.render()`의 첫번째 인자는 템플릿, 두번째 인자는 템플릿에 추가할 정보 객체
+
+### GET /POST
+컨트롤더도 query에 접근하려면 method가 get이어야 함. method=get은 주소창에 문자열이 보임
+
+
+### Pages
+
+- [x] Home
+- [x] Join
+- [x] Login
+- [x] Search
+- [ ] User Detail
+- [x] Edit Profile
+- [x] Change Password
+- [x] Upload
+- [ ] Video Detail
+- [x] Edit Video
