@@ -1,5 +1,5 @@
 // export const home = (req, res) => res.send("Home");
-import { videos } from "../db";
+import { videos } from "../db";     // mongoDB로 연결하기전 fakeDB임
 
 export const home = (req, res) => {
     res.render("home", { pageTitle: "Home", videos });     // /views/home.pug 불러옴
@@ -11,7 +11,7 @@ export const search = (req, res) => {
     const {
         query: { term: searchingBy }
     } = req;
-    res.render("search", { pageTitle: "Search", searchingBy }); // es6에서 key:value가 같으면 key값만 쓸 수 있음
+    res.render("search", { pageTitle: "Search", searchingBy, videos }); // es6에서 key:value가 같으면 key값만 쓸 수 있음
     // res.render("search", { pageTitle: "Search", searchingBy: searchingBy });
 }
     
