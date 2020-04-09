@@ -116,3 +116,12 @@ locals 기능을 통해 global 변수로 사용
 - [x] Upload
 - [ ] Video Detail
 - [x] Edit Video
+
+### HTTP 상태코드 status code
+https://developer.mozilla.org/ko/docs/Web/HTTP/Status
+- 200: OK
+- 204: No Content
+- 400: Bad Request
+- 401: Unauthorized
+- 403: Forbidden
+- 404: Not Found
