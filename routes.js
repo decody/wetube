@@ -43,7 +43,7 @@ const routes = {
             return VIDEO_DETAIL;
         }
     },
-    ditVideo: id => {
+    editVideo: id => {
         if (id) {
             return `/videos/${id}/edit`;
         } else {

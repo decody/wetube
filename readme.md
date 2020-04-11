@@ -161,4 +161,26 @@ Airbnb 같은 큰 회사들은 코딩 스타일 룰이 있고 formatter를 가�
 `npm install eslint-plugin-prettier`
 
 ### Regular Expression
+search 기능 구현
 https://regex101.com
+
+### Webpack
+모듈 번들러
+설치 `npm install webpack webpack-cli`
+번들링 `npm rum dev:assets`
+
+SCSS를 위한 설치
+`@next`는 최신버전
+`npm install extract-text-webpack-plugin@next` 
+SCSS 컴파일하기 위한 설치
+POST CSS는 prefix를 처리하기 위한 패키지
+`npm install css-loader postcss-loader sass-loader`
+windows에서 `WEBPACK_ENV`를 설정하여 mode의 문자열에 'development'와 같이 맨 뒤 공백 제러를 해야 함
+"dev:assets": "set WEBPACK_ENV=development&&webpack",
+"build:assets": "set WEBPACK_ENV=production&&webpack"
+`npm install autoprefixer` 설치
+`npm install node-sass` 설치
+`npm install babel-loader` 설치
+`npm install @babel/polyfill` 설치
+
+처음 불러오는 html 파일에 웹팩으로 컴파일된 static js파일 추가 
