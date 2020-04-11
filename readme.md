@@ -125,3 +125,40 @@ https://developer.mozilla.org/ko/docs/Web/HTTP/Status
 - 401: Unauthorized
 - 403: Forbidden
 - 404: Not Found
+
+### MongoDB
+Mongodb 설치: `https://javacpro.tistory.com/64` 참고
+
+1. Windows 10 MongoDB Community Server (*.MSI) 버전 다운로드 설치. 설치시 compass는 언체크드
+2. 시스템 환경변수 추가 `mongoDB설치경로\bin`
+3. commond 모드에서 mongod 입력 확인 `c:\data\db\` 폴더 추가
+4. `mongod --help`를 치면 `dbpath`를 설정할 수 있음
+5. `mongod --dbpath arg` 입력. `arg`는 경로가 적힌 파라미터
+
+mongoDB는 document를 줄여주며, document는 JSON 파일임
+
+### mongoose
+mongoose는 mongodb와 연결시켜주는 ORM
+`npm install mongoose`
+
+### dotenv
+`npm install dotenv`
+`.env` 파일 생성
+`.gitignore`에도 파일 추가
+배포된 url에 노출되지 말아야할 정보를 숨길 때 사용
+
+
+### File Upload
+`npm install multer`
+
+### async / await
+
+### eslint
+`npm install eslint`
+`eslint --init`
+root에 `.eslintrc.js` 자동 생성됨.
+Airbnb 같은 큰 회사들은 코딩 스타일 룰이 있고 formatter를 가지고 있음.
+`npm install eslint-plugin-prettier`
+
+### Regular Expression
+https://regex101.com
