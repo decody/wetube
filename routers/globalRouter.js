@@ -16,7 +16,7 @@ const globalRouter = express.Router();
 // videoController.js와 userController.js에서 각 처리기능들을 불러옴
 
 globalRouter.get(routes.join, getJoin);
-globalRouter.post(routes.join, postJoin);
+globalRouter.post(routes.join, postJoin, postLogin);
 
 globalRouter.get(routes.login, getLogin);
 globalRouter.post(routes.login, postLogin);

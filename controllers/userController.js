@@ -1,11 +1,12 @@
 import routes from "../routes";
 
 export const getJoin = (req, res) => {
+    console.log("getJoin");
     res.render("join", { pageTitle: "Join" });
 };
 
 export const postJoin = (req, res) => {
-    // console.log(req.body);
+    console.log(req.body);
     const {
         body: { name, email, password, password2 }
     } = req;

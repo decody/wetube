@@ -1,15 +1,20 @@
+import routes from "../routes";
 import { videos } from "../db";     // mongoDB로 연결하기전 json형의 fakeDB로 연결
 import Video from "../models/Video";
 
+// Home
+
 export const home = async (req, res) => {
     try {
-        const videos = await Video.find({}).sort({"_id": -1 });
+        const videos = await Video.find({}).sort({ _id: -1 });
         res.render("home", { pageTitle: "Home", videos });     // /views/home.pug 불러옴
     } catch (error) {
         console.log(error);
         res.render("home", { pageTitle: "Home", videos: [] })
     }
 }
+
+// Search
     
 export const search = async (req, res) => {
     // console.log(req.query.term);
@@ -26,6 +31,8 @@ export const search = async (req, res) => {
     res.render("search", { pageTitle: "Search", searchingBy, videos }); // es6에서 key:value가 같으면 key값만 쓸 수 있음
     // res.render("search", { pageTitle: "Search", searchingBy: searchingBy });
 }
+
+// Upload
 
 export const getUpload = (req, res) =>
     res.render("upload", { pageTitle: "Upload" });
@@ -47,6 +54,8 @@ export const postUpload = async (req, res) => {
     res.redirect(routes.videoDetail(newVideo.id));
 };  
 
+// Video Detail
+
 export const videoDetail = async (req, res) => {
     const {
         params: { id }
@@ -58,6 +67,8 @@ export const videoDetail = async (req, res) => {
         res.redirect(routes.home);
     }
 };
+
+// Edit Video
     
 export const getEditVideo = async (req, res) => {
     const {
@@ -83,6 +94,8 @@ export const postEditVideo = async (req, res) => {
         res.redirect(routes.home);
     }
 };
+
+// Delete Video
 
 export const deleteVideo = async (req, res) => {
     const {

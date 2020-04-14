@@ -7,7 +7,7 @@ const VideoSchema = new mongoose.Schema({
     },
     title: {
         type: String,
-        required: "Title is required"
+        required: "Tilte is required"
     },
     description: String,
     views: {
@@ -27,5 +27,4 @@ const VideoSchema = new mongoose.Schema({
 });
 
 const model = mongoose.model("Video", VideoSchema);
-
 export default model;
