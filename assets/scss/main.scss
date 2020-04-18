@@ -38,16 +38,16 @@ textarea,
 }
 
 button {
-    border: none;
-    background-color: #3498db;
-    color: white;
-  }
-  
-  button.delete {
-    background-color: $dark-red;
-  }
-  
-  button,
-  input[type="submit"] {
-    cursor: pointer;
-  }
+  border: none;
+  background-color: #3498db;
+  color: white;
+}
+
+button.delete {
+  background-color: $dark-red;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}

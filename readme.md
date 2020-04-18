@@ -184,3 +184,32 @@ windows에서 `WEBPACK_ENV`를 설정하여 mode의 문자열에 'development'�
 `npm install @babel/polyfill` 설치
 
 처음 불러오는 html 파일에 웹팩으로 컴파일된 static js파일 추가 
+
+
+### Passport
+사용자 인증을 구현하는 미들웨어
+Passport가 사용자 인증 cookie를 가져와 인증완료된 User object를 controller에 넘겨줌.
+
+User.js Model 생성
+`npm install passport`
+`npm install passport-local`
+username과 password를 쓰는 사용자 인증 방식(strategy)
+`npm install passport-local-mongoose`
+
+
+passport.js 생성
+
+### Session
+`randomkeygen.com`
+`npm install express-session`
+
+Join 하고 나서 웹브라우저 id 저장을 누르면 개발자모드에서 Application 탭의 Storage의 Cookies 정보 connect.sid의 쿠키를 확인할 수 있음
+
+### MongoStore
+cookie를 저장
+`npm install connect-mongo`
+
+
+### onlyPublic / onlrPrivate 미들웨어에 추가
+cookie에 저장된 user가 `/join` 같은 router를 통해서 가지 못하게 제어
+onlyPublic과 onlyPrivate 미들웨어 접근 제어를 하고 나서 next()로 넘김

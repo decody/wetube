@@ -6,6 +6,72 @@ import Video from "../models/Video";
 
 export const home = async (req, res) => {
     try {
+        // const videos = await Video.find({}).sort({ _id: -1 });
+        // const videos = [
+        //     {
+        //         id: 324393,
+        //         title: "Video awesome",
+        //         description: "This is something I love",
+        //         views: 24,
+        //         videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+        //         creator: {
+        //         id: 121212,
+        //         name: "Nicolas",
+        //         email: "nico@las.com"
+        //         }
+        //     },
+        //     {
+        //         id: 1212121,
+        //         title: "Video super",
+        //         description: "This is something I love",
+        //         views: 24,
+        //         videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+        //         creator: {
+        //         id: 121212,
+        //         name: "Nicolas",
+        //         email: "nico@las.com"
+        //         }
+        //     },
+        //     {
+        //         id: 55555,
+        //         title: "Video nice",
+        //         description: "This is something I love",
+        //         views: 24,
+        //         videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+        //         creator: {
+        //         id: 121212,
+        //         name: "Nicolas",
+        //         email: "nico@las.com"
+        //         }
+        //     },
+        //     {
+        //         id: 23423,
+        //         title: "Video nice",
+        //         description: "This is something I love",
+        //         views: 24,
+        //         videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+        //         creator: {
+        //         id: 121212,
+        //         name: "Nicolas",
+        //         email: "nico@las.com"
+        //         }
+        //     },
+        //     {
+        //         id: 11111,
+        //         title: "Video perfect",
+        //         description: "This is something I love",
+        //         views: 24,
+        //         videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
+        //         creator: {
+        //         id: 121212,
+        //         name: "Nicolas",
+        //         email: "nico@las.com"
+        //         }
+        //     }
+        // ];
+        if (Video == [] || Video == null || Video == "undefined") {
+            console.log("Video Model did not connect from MongoDB");
+        }
         const videos = await Video.find({}).sort({ _id: -1 });
         res.render("home", { pageTitle: "Home", videos });     // /views/home.pug 불러옴
     } catch (error) {

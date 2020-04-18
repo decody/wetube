@@ -3,7 +3,8 @@ include mixins/videoBlock
 
 block content
     .home-videos
-        each item in videos 
+        p Video List in Homepage 
+        each item in videos
             +videoBlock({
                 id:item.id,
                 title:item.title,
