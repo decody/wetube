@@ -213,3 +213,18 @@ cookie를 저장
 ### onlyPublic / onlrPrivate 미들웨어에 추가
 cookie에 저장된 user가 `/join` 같은 router를 통해서 가지 못하게 제어
 onlyPublic과 onlyPrivate 미들웨어 접근 제어를 하고 나서 next()로 넘김
+
+### Github 로그인 인증
+`npm install passport-github`
+
+Github > Settings > Developer settings > OAuth Apps 페이지에서 OAuth 추가
+Authorization callback URL에 `http://localhost:4000/auth/github/callback` 기입
+.env에 `GITHUB_ID`와 `GITHUB_SECRET` 환경설정 추가
+
+github website (auth) -> github website (auth) -> /auth/github/callback
+githubLoginCallback (profile)
+    => cb(null, user)
+
+    cookie = makeCookie(user)
+    saveldCookie = saveCookie(cookie)
+    sendCookie(savedCookie)
