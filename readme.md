@@ -214,7 +214,7 @@ cookie를 저장
 cookie에 저장된 user가 `/join` 같은 router를 통해서 가지 못하게 제어
 onlyPublic과 onlyPrivate 미들웨어 접근 제어를 하고 나서 next()로 넘김
 
-### Github 로그인 인증
+### Github 인증
 `npm install passport-github`
 
 Github > Settings > Developer settings > OAuth Apps 페이지에서 OAuth 추가
@@ -228,3 +228,20 @@ githubLoginCallback (profile)
     cookie = makeCookie(user)
     saveldCookie = saveCookie(cookie)
     sendCookie(savedCookie)
+
+### Facebook 인증  
+`https://developers.facebook.com/` > My Apps > Create a New App ID
+Display Name: wetute, Contact Email 입력
+Site URL: http://localhost:4000/
+
+대시보드에서 앱 ID 복사
+.env에서 FACEBOOK_ID, FACEBOOK_SECRET 생성
+`npm install passport-facebook`설치
+
+기본설정에서 Privacy Policy URL `http://www.passportjs.org/packages/passport-facebook/`
+
+페이스북은 https로 설정해야 함
+그래서 localtunnel 설치해야만 함
+`npm install -g localtunnel`
+`lt --port 4000`
+`npm run tunnel`
