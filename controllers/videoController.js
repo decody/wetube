@@ -1,6 +1,8 @@
 import routes from "../routes";
 import { videos } from "../db";     // mongoDB로 연결하기전 json형의 fakeDB로 연결
 import Video from "../models/Video";
+import Comment from "../models/Comment";
+// import { restart } from "nodemon";
 
 // Home
 
@@ -113,9 +115,11 @@ export const postUpload = async (req, res) => {
     const newVideo = await Video.create({
         fileUrl: path,
         title,
-        description
+        description,
+        creator: req.user.id
     });
-    console.log(newVideo);
+    req.user.videos.push(newVideo.id);
+    req.user.save();
     // res.render("upload", { pageTitle: "Upload" });
     res.redirect(routes.videoDetail(newVideo.id));
 };  
@@ -127,7 +131,13 @@ export const videoDetail = async (req, res) => {
         params: { id }
     } = req;
     try {
-        const video = await Video.findById(id);
+        // const video = await Video.findById(id);
+        // const video = await Video.findById(id).populate("creator");
+        const video = await Video.findById(id)
+            .populate("creator")
+            .populate("comments");
+        res.render("videoDetail", { pageTitle: video.title, video });    
+        console.log(video);
         res.render("videoDetail", { pageTitle: video.title, video });
     } catch (error) {
         res.redirect(routes.home);
@@ -138,13 +148,17 @@ export const videoDetail = async (req, res) => {
     
 export const getEditVideo = async (req, res) => {
     const {
-        params: { id }
+      params: { id }
     } = req;
     try {
-        const video = await Video.findById(id);
+      const video = await Video.findById(id);
+      if (String(video.creator) !== req.user.id) {
+        throw Error();
+      } else {
         res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });
+      }
     } catch (error) {
-        res.redirect(routes.home);
+      res.redirect(routes.home);
     }
 };
 
@@ -168,10 +182,56 @@ export const deleteVideo = async (req, res) => {
         params: { id }
     } = req;
     try {
-        await Video.findOneAndDelete({ _id: id });
+        await Video.findOneAndRemove({ _id: id });
+        const video = await Video.findById(id);
+        if (String(video.creator) !== req.user.id) {
+            throw Error();
+        } else {
+            await Video.findOneAndRemove({ _id: id });
+        }
     } catch (error) {
         console.log(error);
     }
     res.redirect(routes.home);
 };
-    
+
+// Register Video View
+
+export const postRegisterView = async (req, res) => {
+    const { 
+        params: { id } 
+    } = req;
+    try {
+        const video = await Video.findById(id);
+        video.views = video.views + 1;
+        video.save();
+        res.status(200);
+    } catch (error) {  
+        res.status(400);
+    } finally {
+        res.end();
+    }
+};
+
+// Add Comment
+
+export const postAddComment = async (req, res) => {
+    const {
+        params: { id },
+        body: { comment },
+        user
+    } = req;
+    try {
+        const video = await Video.findById(id);
+        const newComment = await Comment.create({
+            text: comment,
+            creator: user.id
+        });
+        video.comments.push(newComment.id);
+        video.save();
+    } catch (error) {
+        res.status(400);
+    } finally {
+        res.end();
+    }
+};

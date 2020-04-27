@@ -245,3 +245,15 @@ Site URL: http://localhost:4000/
 `npm install -g localtunnel`
 `lt --port 4000`
 `npm run tunnel`
+
+### AJAX + API
+
+axios: HTTP request 요청을 바꿈
+`npm install axios`
+
+`fetch()`
+
+
+### express-flash
+메시지
+`npm install express-flash`

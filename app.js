@@ -7,12 +7,14 @@ import bodyParser from "body-parser";
 import passport from "passport";
 import mongoose from "mongoose";
 import session from "express-session";
+import flash from "express-flash";
 import MongoStore from "connect-mongo";
 import { localsMiddleware } from "./middlewares";
 import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import routes from "./routes";
+import apiRouter from "./routers/apiRouter";
 
 import "./passport";
 
@@ -39,6 +41,8 @@ app.use(
         })
     })
 );
+app.use(flash());
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -47,5 +51,6 @@ app.use(localsMiddleware);
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
+app.use(routes.api, apiRouter);
 
 export default app;
